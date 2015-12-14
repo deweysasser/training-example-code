@@ -6,6 +6,9 @@ class Basic(object):
         pass;
 
     def fact(self, i):
+        if i < 0: raise Exception("Can't compute factorials of negatives!")
+        if i < 0: 
+            raise Exception("Can't compute factorials of negatives!")
         if i is 1: return 1
         return i*self.fact(i-1)
 
@@ -21,3 +24,6 @@ class Gen(object):
     def get(self):
         self.value += 1
         return self.value
+
+if __name__ == "__main__":
+    print Basic().fact(40)
