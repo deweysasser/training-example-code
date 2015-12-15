@@ -53,7 +53,7 @@ class TestBasic(unittest.TestCase):
 
 
     @patch.object(Gen, 'get', return_value=3)
-    def testGenFact2(self, mocked):
+    def testGenFact3(self, mocked):
         ''' Patching the class, take 2:  Do it with a decorator'''
         gen = Gen()
         self.assertEqual(self.o.genfact(gen), 6)
@@ -67,7 +67,7 @@ class TestBasic(unittest.TestCase):
 
 
 
-    def testGenFact2(self):
+    def testGenFact4(self):
         '''Demonstrate why we might use a 'with' statement -- different mocks'''
         with patch.object(Gen, 'get', return_value=3) as mocked:
             gen = Gen()
@@ -84,7 +84,7 @@ class TestBasic(unittest.TestCase):
 
 
 
-    def testFact(self):
+    def testFact2(self):
         '''Now an interesting case -- we're going to use mock to count how many times and how fact is called'''
         with patch.object(self.o, 'fact', wraps=self.o.fact) as mocked:
             with patch.object(self.o, 'genfact', wraps=self.o.genfact) as mgen:
