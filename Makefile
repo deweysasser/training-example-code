@@ -1,6 +1,9 @@
 test:
 	python -m unittest discover
 
+junit:
+	py.test --junitxml results.xml testBasic.py
+
 coverage:
 	coverage erase
 	coverage run -m unittest discover
