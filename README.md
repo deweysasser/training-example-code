@@ -20,6 +20,10 @@ Contents
 Usage
 =====
 
+For those without 'make', use the 'project.sh' and 'jenkins.sh' shell scripts
+
+For this with make...
+
 'make project'
 --------------
 
