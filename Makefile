@@ -3,7 +3,7 @@ JENKINS_IMAGE=deweysasser/training-jenkins
 all:  project
 
 jenkins:  jenkins-image jenkins-volume
-	docker rm -f tjenkins
+	@-docker rm -f tjenkins
 	docker run -d -p 8080:8080 --volumes-from jenkins-volume --name tjenkins $(JENKINS_IMAGE)
 
 jenkins-volume: jenkins-image
