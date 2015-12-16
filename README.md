@@ -1,11 +1,39 @@
 training-example-code
 =====================
 
-Code and slides from a training seminar on coding standards for team
-coding methodology for a team already somewhat familiar with python.
+Code, slides and docker support for a training seminar on coding
+standards for team coding methodology for a team already somewhat
+familiar with python.
 
 I was one of several presenters, this module contains only my slides
-and code examples.
+and code examples and a bit of scaffolding.
+
+Contents
+========
+
+* code/test -- code examples accompying the testing presentation
+* docker/jenkins -- the Jenkins docker image used in this seminar (can
+  also docker pull deweysasser/training-jenkins)
+* code/project -- a placeholder for project code
+* Makefile -- a driver for all of this
+
+Usage
+=====
+
+'make project'
+--------------
+
+Assuming you have 'make' installed, you can type "make" or "make
+project" and it will build a docker image containing code/project and
+run the "app.py" in that directory (which defaults to a trivial flask
+example).
+
+'make jenkins'
+--------------
+
+This will build a new jenkins image and run it, preserving any state
+you have in the jenkins-volume data container. (I.e. it will preserve
+the build jobs you've already created.)
 
 Seminar Outline
 ===============
