@@ -10,4 +10,4 @@ docker ps -a | grep -q jenkins-volume  && echo Volume exists || docker create --
 
 # allowed to fail
 docker rm -f tjenkins > /dev/null 2>&1
-docker run -d -p 8080:8080 --volumes-from jenkins-volume --name tjenkins ${JENKINS_IMAGE}
+docker run -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock --volumes-from jenkins-volume --name tjenkins ${JENKINS_IMAGE}

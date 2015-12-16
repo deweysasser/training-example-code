@@ -16,7 +16,7 @@ project: project-test
 # Create an up-to-date, running jenkins.  Recreates jenkins each time, but data will be preserved in jenkins-volume
 jenkins:  jenkins-image jenkins-volume
 	@-docker rm -f tjenkins
-	docker run -d -p 8080:8080 --volumes-from jenkins-volume --name tjenkins $(JENKINS_IMAGE)
+	docker run -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock --volumes-from jenkins-volume --name tjenkins $(JENKINS_IMAGE)
 
 # Ensure existence of a jenkins-volume data container to preserve jenkins state.  If one already exists it will be used.
 jenkins-volume: jenkins-image
