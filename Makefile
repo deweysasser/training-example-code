@@ -1,4 +1,5 @@
 JENKINS_IMAGE=deweysasser/training-jenkins
+PROJECT_IMAGE=my-project
 
 # By default make will execute on the first target.  This will make that run your project by default
 all:  project
@@ -8,10 +9,13 @@ project-test:
 	cd code/project; test -f Makefile && make || python -m unittest discover
 
 # Run a docker volume containing project, listening on port 5000
-project: project-test
-	docker build -t my-project -f docker/project/Dockerfile .
+project: project-test project-image
 	-@docker rm -f my-project
-	docker run  -p 5000:5000 --name my-project my-project
+	docker run  -p 5000:5000 --name $(PROJECT_IMAGE) my-project
+
+project-image:
+	docker build -t $(PROJECT_IMAGE) -f docker/project/Dockerfile .
+
 
 # Create an up-to-date, running jenkins.  Recreates jenkins each time, but data will be preserved in jenkins-volume
 jenkins:  jenkins-image jenkins-volume
