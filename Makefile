@@ -12,7 +12,10 @@ jenkins-volume: jenkins-image
 jenkins-image: 
 	docker build -t $(JENKINS_IMAGE) docker/jenkins
 
-project:
+project-test:
+	cd code/project; test -f Makefile && make || python -m unittest discover
+
+project: project-test
 	docker build -t my-project -f docker/project/Dockerfile .
 	-@docker rm -f my-project
 	docker run  -p 5000:5000 --name my-project my-project
