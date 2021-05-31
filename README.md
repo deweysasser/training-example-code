@@ -1,3 +1,8 @@
+ARCHIVED
+========
+
+This code is archived and unmaintained.
+
 training-example-code
 =====================
 
